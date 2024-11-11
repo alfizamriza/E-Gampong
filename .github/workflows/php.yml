@@ -14,11 +14,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Check out the code
       - uses: actions/checkout@v4
 
+      # Set up PHP 8.2
+      - name: Set up PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'  # Specify PHP version 8.2
+
+      # Install Composer dependencies
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      # Validate composer.json and composer.lock
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
+      # Cache Composer dependencies for faster builds
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
@@ -28,23 +41,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      # Setel izin eksekusi untuk PHPUnit dan PHPStan
+      # Set execution permissions for PHPUnit and PHPStan
       - name: Make PHPUnit and PHPStan executable
         run: |
           chmod +x vendor/bin/phpunit
           chmod +x vendor/bin/phpstan
 
-      # Menjalankan pengujian
+      # Run tests using PHPUnit
       - name: Run test suite
         run: composer run-script test
 
-      # Menjalankan PHPStan
+      # Run PHPStan (static analysis)
       - name: Run PHPStan
         run: composer run-script phpstan
 
-      # Menjalankan PHPCS
+      # Run PHPCS (code style checking)
       - name: Run PHPCS
         run: composer run-script phpcs
