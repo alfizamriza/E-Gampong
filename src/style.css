@@ -1,0 +1,112 @@
+a{
+    text-decoration: none;
+}
+.id{
+    background: -webkit-linear-gradient(top,#3CB371,#7CFC00);
+    background: #D3D3D3;
+}
+p{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-top: 0.1px;
+}
+
+h1{
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 0.1px;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #9E7E3;
+    background-repeat: no-repeat;
+    
+}
+label{
+    font-family: "Raleway",sens-serif;
+    font-size: 11pt;
+}
+#forgot-pass{
+    color: #16a085;
+    font-family: "Raleway",sans-serif; 
+    font-size: 10pt; 
+    margin-top: 3px; 
+    text-align: right;
+}
+.card{
+    background: #E9E7E3; 
+    background-image: url("Image/kota.png");
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    border-radius: 25%;
+    box-shadow: 1px 2px 8px reba(0,0,0,0.65); 
+    height: 410px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+}
+#card-content{
+    padding: 12px 44px;
+
+}
+#card-title{
+    Letter-spacing: 5px;
+    padding-bottom: 23px; 
+    padding-top: 13px;
+    width: 100%; 
+    text-align: center;
+}
+#signup{
+    color: #00FF00;
+    shadow
+    font-family: "Raleway",sans-serif; 
+    font-size: 10pt;
+    margin-top: 16px;
+    text-align: center;
+}
+
+#submit-btn{
+    background: -webkit-linear-gradient(top,#3CB371,#7CFC00);
+    border-radius: 21px;
+    border: none;
+    box-shadow: 0px 1px 8px #16a085;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway semibold",sans-serif;
+    height: 42.3px;
+    margin: 0 auto;
+    margin-top: 50px;
+    transition: 0.25s;
+    width: 153px;
+}
+#submit-btn:hover{
+    background: -webkit-linear-gradient(top,#7CFC00,#3CB371);
+}
+.form{
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-border{
+    height: 1px;
+    width: 100%;
+    background: -webkit-linear-linear-gradient(right,#3498bd,#9b59b6);
+    /* padding-left: 30px; */
+}
+.form-content{
+    background: #D3D3D3;
+    border: none;
+    height: 30px;
+    border-radius: 21px;
+    outline: none;
+    padding-left: 14px;
+
+}
+.underline-title{
+    background: -webkit-linear-linear-gradient(right,#3498bd,#9b59b6):
+    height: 2px;
+    margin: -1.1rem auto 0 auto;
+    width: 89px;
+}
