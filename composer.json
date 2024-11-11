@@ -3,7 +3,7 @@
     "description": "E-Gampong - Sistem Pembuatan Surat Desa",
     "license": "proprietary",
     "require": {
-        "doctrine/instantiator": "1.5"
+        "doctrine/instantiator": "^1.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
