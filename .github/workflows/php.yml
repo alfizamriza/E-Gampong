@@ -13,12 +13,52 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: egampong
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
+      # Check out the code
       - uses: actions/checkout@v4
 
+      # Set up PHP
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0' # Gantilah dengan versi PHP yang sesuai
+
+      # Install Composer dependencies
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      # Wait for MySQL to be ready
+      - name: Wait for MySQL to be ready
+        run: |
+          while ! mysqladmin ping --host=localhost --user=root --password=root --silent; do
+            echo "Waiting for database to start..."
+            sleep 5
+          done
+
+      # Import database schema (import file egampong.sql)
+      - name: Run database setup (import .sql file)
+        run: |
+          mysql -h 127.0.0.1 -u root -proot egampong < database/egampong.sql
+
+      # Validate composer.json and composer.lock
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
+      # Cache Composer dependencies for faster builds
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
@@ -28,23 +68,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      # Setel izin eksekusi untuk PHPUnit dan PHPStan
+      # Set execution permissions for PHPUnit and PHPStan
       - name: Make PHPUnit and PHPStan executable
         run: |
           chmod +x vendor/bin/phpunit
           chmod +x vendor/bin/phpstan
 
-      # Menjalankan pengujian
+      # Run tests using PHPUnit
       - name: Run test suite
         run: composer run-script test
 
-      # Menjalankan PHPStan
+      # Run PHPStan (static analysis)
       - name: Run PHPStan
         run: composer run-script phpstan
 
-      # Menjalankan PHPCS
+      # Run PHPCS (code style checking)
       - name: Run PHPCS
         run: composer run-script phpcs
