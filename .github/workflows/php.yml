@@ -1,0 +1,54 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pindah ke direktori proyek (jika `composer.json` ada di dalam direktori tertentu)
+      - name: Change to project directory
+        working-directory: E_Gampong-master # ganti dengan nama direktori Anda jika berbeda
+        run: pwd
+
+      - name: Validate composer.json and composer.lock
+        working-directory: E_Gampong-master
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        working-directory: E_Gampong-master
+        run: composer install --prefer-dist --no-progress
+
+      # Menjalankan script pengujian dari composer.json
+      - name: Run test suite
+        working-directory: E_Gampong-master
+        run: composer run-script test
+
+      # Menjalankan PHPStan dari composer.json
+      - name: Run PHPStan
+        working-directory: E_Gampong-master
+        run: composer run-script phpstan
+
+      # Menjalankan PHPCS dari composer.json
+      - name: Run PHPCS
+        working-directory: E_Gampong-master
+        run: composer run-script phpcs
