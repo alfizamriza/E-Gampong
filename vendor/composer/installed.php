@@ -3,7 +3,7 @@
         'name' => 'user/e-gampong',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0c48ef298724077700de60ead1ab3d203c30cb39',
+        'reference' => '991ab96caabb8610bbfceb32bc7561b1ac2a0415',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,13 +11,13 @@
     ),
     'versions' => array(
         'doctrine/instantiator' => array(
-            'pretty_version' => '2.0.0',
-            'version' => '2.0.0.0',
-            'reference' => 'c6222283fa3f4ac679f8b9ced9a4e23f163e80d0',
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => '0a0fa9780f5d4e507415a065172d26a98d02047b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/instantiator',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.12.1',
@@ -283,7 +283,7 @@
         'user/e-gampong' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0c48ef298724077700de60ead1ab3d203c30cb39',
+            'reference' => '991ab96caabb8610bbfceb32bc7561b1ac2a0415',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
