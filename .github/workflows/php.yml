@@ -31,9 +31,11 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      # Setel izin eksekusi untuk PHPUnit
-      - name: Make PHPUnit executable
-        run: chmod +x vendor/bin/phpunit
+      # Setel izin eksekusi untuk PHPUnit dan PHPStan
+      - name: Make PHPUnit and PHPStan executable
+        run: |
+          chmod +x vendor/bin/phpunit
+          chmod +x vendor/bin/phpstan
 
       # Menjalankan pengujian
       - name: Run test suite
