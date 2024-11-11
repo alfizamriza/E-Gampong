@@ -3,7 +3,7 @@
         'name' => 'user/e-gampong',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cbd32451e538e3acc0dda7c57107bdefd4ebcb40',
+        'reference' => '0c48ef298724077700de60ead1ab3d203c30cb39',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -283,7 +283,7 @@
         'user/e-gampong' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cbd32451e538e3acc0dda7c57107bdefd4ebcb40',
+            'reference' => '0c48ef298724077700de60ead1ab3d203c30cb39',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
